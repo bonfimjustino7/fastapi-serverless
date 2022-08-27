@@ -1,4 +1,4 @@
-service: my-awesome-app
+service: subscription-service
 
 package:
   individually: true
@@ -7,7 +7,7 @@ package:
 provider:
   name: aws
   runtime: python3.9
-  region: eu-west-1
+  region: us-east-1
   stage: ${opt:stage, "dev"}
 
 plugins:
@@ -24,15 +24,18 @@ functions:
   app:
     package:
       patterns:
-        - "main.py"
+        - "src/**"
         - "!requirements.txt"
+        - "!.vscode/**"
+        - '!.pylint'
         - "!package.json"
         - "!package-lock.json"
         - "!.serverless/**"
         - "!.virtualenv/**"
         - "!node_modules/**"
+        - "!venv_wsl/**"
 
-    handler: main.handler
+    handler: src/main.handler
     environment:
       STAGE: ${self:provider.stage}
     layers:

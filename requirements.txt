@@ -1,2 +1,4 @@
 mangum
 fastapi
+pytest
+sqlalchemy

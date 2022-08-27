@@ -1,0 +1,8 @@
+[MASTER]
+disable=missing-docstring,        
+extension-pkg-whitelist=pydantic
+
+
+[FORMAT]
+# Maximum number of characters on a single line.
+max-line-length=100
